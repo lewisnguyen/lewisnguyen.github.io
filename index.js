@@ -120,8 +120,8 @@ let day_of_month = function(_current_month) {
 let _current_month = Number(prompt("Enter the current month: "));
 day_of_month(_current_month);
 */
-let calculate_hour = function(_hour, _minute) {
-	let _hour = _hour;
+let calculate_hour = function(hour, _minute) {
+	let _hour = hour;
 	if (_hour < 23) {
 		if (_minute === 60) {
 			_hour++
@@ -133,8 +133,8 @@ let calculate_hour = function(_hour, _minute) {
 	}
 	return _hour;
 }
-let calculate_minute = function(_minute, _second) {
-	let _minute = _minute;
+let calculate_minute = function(minute, _second) {
+	let _minute = minute;
 	if (_minute < 59) {
 		if (_second === 60) {
 			_minute++;
