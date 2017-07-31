@@ -143,6 +143,10 @@ let calculate_minute = function(minute, _second) {
 		}
 	} else if (_minute > 59) {
 		alert("You enter wrong minute!");
+	} else {
+		if (_second === 60) {
+			_minute = 60;
+		}
 	}
 	return _minute;
 }
@@ -158,12 +162,12 @@ let one_second_later = function(_current_time = []) {
 		}
 	}
 	let _final_minute = calculate_minute(_time[1], _time[2]);
-	if (_final_minute === 60) {
-		_final_minute = 0;
-	}
 	let _final_hour = calculate_hour(_time[0], _final_minute);
 	if (_time[2] === 60) {
 		_time[2] = 0;
+	}
+	if (_final_minute === 60) {
+		_final_minute = 0;
 	}
 	let _final_time = _final_hour + "h" + _final_minute + "m" + _time[2];
 	alert(_final_time);
