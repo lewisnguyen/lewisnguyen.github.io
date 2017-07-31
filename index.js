@@ -144,6 +144,7 @@ let calculate_minute = function(minute, _second) {
 	} else if (_second === 60) {
 		_minute = 0;
 	}
+	return _minute;
 }
 let one_second_later = function(_current_time = []) {
 	let _array_length = _current_time.length;
