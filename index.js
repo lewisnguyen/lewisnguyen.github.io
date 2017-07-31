@@ -123,7 +123,7 @@ day_of_month(_current_month);
 let one_second_later = function(_current_time = []) {
 	let _array_length = _current_time.length;
 	let i = 0;
-	let text = ["h", "m", "s"];
+	let text = ["hour", "minute", "second"];
 	let _time = "";
 	for ( i; i < _array_length; i++) {
 		_time += _current_time[i] + text[i];
