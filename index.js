@@ -158,12 +158,13 @@ let one_second_later = function(_current_time = []) {
 	}
 	let _final_minute = calculate_minute(_time[1], _time[2]);
 	let _final_hour = calculate_hour(_time[0], _final_minute);
-	let _final_time = _final_hour + "h" + _final_minute + "m" + time[2];
+	let _final_time = _final_hour + "h" + _final_minute + "m" + _time[2];
 	alert(_final_time);
 }
 let _current_time = [];
-_current_time[0] = Number(prompt("Enter the current hout: "));
+_current_time[0] = Number(prompt("Enter the current hour: "));
 _current_time[1] = Number(prompt("Enter the current minute: "));
 _current_time[2] = Number(prompt("Enter the current second: "));
 one_second_later(_current_time);
 
+    
