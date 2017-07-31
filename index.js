@@ -158,8 +158,8 @@ let one_second_later = function(_current_time = []) {
 		}
 	}
 	let _final_minute = calculate_minute(_time[1], _time[2]);
-	if (_final_time === 60) {
-		_final_time = 0;
+	if (_final_minute === 60) {
+		_final_minute = 0;
 	}
 	let _final_hour = calculate_hour(_time[0], _final_minute);
 	if (_time[2] === 60) {
