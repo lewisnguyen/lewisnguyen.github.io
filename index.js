@@ -78,6 +78,61 @@ let compare_number = function(_number1,_number2) {
 		alert("The number1 and the number2 are equal!");
 	}
 }
-const _number_1 = prompt("Enter the number 1: ");
-const _number_2 = prompt("Enter the number 2: ");
+/*
+const _number_1 = Number(prompt("Enter the number 1: "));
+const _number_2 = Number(prompt("Enter the number 2: "));
 compare_number(_number_1,_number_2);
+*/
+let nb1 = 0; // Number(prompt("Enter nb1:"));
+let nb2 = 0;// Number(prompt("Enter nb2:"));
+let nb3 = 0;// Number(prompt("Enter nb3:"));
+
+if (nb1 > nb2) {
+  nb1 = nb3 * 2;
+} else {
+  nb1++;
+  if (nb2 > nb3) {
+    nb1 += nb3 * 3;
+  } else {
+    nb1 = 0;
+    nb3 = nb3 * 2 + nb2;
+  }
+}
+console.log(nb1, nb2, nb3);
+
+//-----------------------------
+let day_of_month = function(_current_month) {
+	switch (_current_month) {
+		case 1:
+		alert("This month has 31 days");
+		break;
+		case 2:
+		alert("This month has 28 days");
+		break;
+		case 3:
+		alert("This month has 31 days");
+		break;
+		default:
+		alert("You enter an uncorrect month!");
+	}
+}
+/*
+let _current_month = Number(prompt("Enter the current month: "));
+day_of_month(_current_month);
+*/
+let one_second_later = function(_current_time = []) {
+	let _array_length = _current_time.length;
+	let i = 0;
+	let text = ["h", "m", "s"];
+	let _time = "";
+	for ( i; i < _array_length; i++) {
+		_time += _current_time[i] + text[i];
+	}
+	alert(_time);
+}
+let _current_time = [];
+_current_time[0] = Number(prompt("Enter the current hout: "));
+_current_time[1] = Number(prompt("Enter the current minute: "));
+_current_time[2] = Number(prompt("Enter the current second: "));
+one_second_later(_current_time);
+
