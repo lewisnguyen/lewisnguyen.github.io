@@ -120,15 +120,46 @@ let day_of_month = function(_current_month) {
 let _current_month = Number(prompt("Enter the current month: "));
 day_of_month(_current_month);
 */
+let calculate_hour = function(_hour, _minute) {
+	let _hour = _hour;
+	if (_hour < 23) {
+		if (_minute === 60) {
+			_hour++
+		}
+	} else if (_hour > 23) {
+		alert("You enter wrong hour!");
+	} else if (_minute === 60) {
+		_hour = 0;
+	}
+	return _hour;
+}
+let calculate_minute = function(_minute, _second) {
+	let _minute = _minute;
+	if (_minute < 59) {
+		if (_second === 60) {
+			_minute++;
+		}
+	} else if (_minute > 59) {
+		alert("You enter wrong minute!");
+	} else if (_second === 60) {
+		_minute = 0;
+	}
+}
 let one_second_later = function(_current_time = []) {
 	let _array_length = _current_time.length;
 	let i = 0;
 	let text = ["h", "m", "s"];
-	let _time = "";
+	let _time = [];
 	for ( i; i < _array_length; i++) {
-		_time += _current_time[i] + text[i];
+		_time[i] = _current_time[i];
+		if (i == _array_length - 1) {
+			_time[i]++;
+		}
 	}
-	alert(_time);
+	let _final_minute = calculate_minute(_time[1], _time[2]);
+	let _final_hour = calculate_hour(_time[0], _final_minute);
+	let _final_time = _final_hour + "h" + _final_minute + "m" + time[2];
+	alert(_final_time);
 }
 let _current_time = [];
 _current_time[0] = Number(prompt("Enter the current hout: "));
