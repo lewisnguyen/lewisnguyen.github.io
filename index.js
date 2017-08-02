@@ -397,3 +397,254 @@ const account = {
 console.log(account.describle());
 account.credit(170);
 console.log(account.describle());
+
+/********************************
+*
+* 		Array practising		*
+*
+*********************************/
+
+const array_builder = {
+	length: 0,
+	musketeers: [],
+	build: function() {
+		this.musketeers = ["Athos", "Porthos", "Aramis"];
+		return this.musketeers;
+	},
+	show: function() {
+		const _array_length = this.musketeers.length;
+		let i = 0;
+		let _text = "The array is: \n";
+		for (i; i < _array_length; i++) {
+			_text += this.musketeers[i] + "\n";
+		}
+		alert(_text);
+	},
+	add: function(_data) {
+		this.musketeers.push(_data);
+	},
+	show_using_foreach: function() {
+		let _text = "The array is: \n";
+		this.musketeers.forEach(_data => {
+			_text += _data + "\n";
+		});
+		alert(_text);
+	},
+	show_using_forof: function() {
+		let _text = "This array is: \n";
+		for (const _data of this.musketeers) {
+			_text += _data + "\n";
+		}
+		alert(_text);
+	},
+	delete: function(_data) {
+		let i = 0;
+		let _array_length = this.musketeers.length;
+		for (i; i <= _array_length; i++) {
+			if (this.musketeers[i] === _data) {
+				this.musketeers.splice(i, 1);
+			}
+		}
+	}
+}
+
+const musketeers = array_builder.build();
+array_builder.add("D'Artagnan");
+array_builder.delete("Aramis");
+array_builder.delete("Porthos");
+// array_builder.show_using_forof();
+
+/* Object constructor
+* const object_name = (_para_1, _para_2, _para_3,...) => {
+	this.property1 = _para_1,
+	this.property2 = _para_2,
+	this.property3 = _para_3,
+	...
+}
+*/
+
+const array_create = {
+	length: 0,
+	values: [],
+	build: function() {
+		this.values = [3, 11, 7, 26, 9, 10];
+	},
+	sum: function() {
+		let _text = "Sum of all items in values is: \n";
+		let _sum = 0;
+		for (_data of this.values) {
+			_sum += _data;
+		}
+		alert(_text + _sum);
+	},
+	max: function() {
+		let i = 1;
+		let _array_length = this.values.length;
+		let _text = "The maximum number in this array is: \n";
+		let _max = this.values[0];
+		for (i; i < _array_length; i++) {
+			if (_max < this.values[i]) {
+				_max = this.values[i];
+			}
+		}
+		alert(_text + _max);
+	}
+}
+
+array_create.build(); // Create array
+// array_create.max();
+
+const word_getting = {
+	words: [],
+	data: "",
+	get_input: function() {
+		this.data = prompt("Type any words, if you want to stop type \"stop\"");
+	},
+	get_data: function() {
+			this.get_input();
+		while (this.data !== "stop") {
+			this.words.push(this.data);
+			this.get_input();
+		}
+	},
+	show: function() {
+		let _text = "All item in words array is: \n";
+		for (const _data of this.words) {
+			_text += _data + "\n";
+		}
+		alert(_text);
+	}
+}
+// word_getting.get_data();
+// word_getting.show();
+
+/**************************
+*
+* Work with String
+*
+***************************/
+
+const word_exact = {
+	_word_length: 0,
+	_data: "",
+	_lower_case: "",
+	_upper_case: "",
+	get_input: function() {
+		this._data = prompt("Enter any word: ");
+	},
+	get_data: function() {
+		this.get_input();
+		this._word_length = this._data.length;
+		this._lower_case = this._data.toLowerCase();
+		this._upper_case = this._data.toUpperCase();
+	},
+	show_data: function() {
+		this.get_data();
+		const number_of_vowel = this.vowel_finder();
+		const reserve_word = this.reserve_word();
+		const plindrome_word = this.plindrome_finder();
+		const _TEXT = "Is this word plindrome? The awnser is: " + plindrome_word;
+		const _txt = "And the reserve of this word is: " + reserve_word + "\n";
+		const _text = "And the number of vowels in this word is: " + number_of_vowel + "\n";
+		alert("Word data is: \n" + this._word_length + "\n" + this._lower_case + " \n" + this._upper_case + "\n" + _text + _txt + _TEXT);
+	},
+	vowel_finder: function() {
+		const vowels = ["u","e","o","a","i"];
+		const word = Array.from(this._data);
+		let number_of_vowel = 0;
+		for (const character of word) {
+			for (const item of vowels) {
+				if (character === item) {
+					number_of_vowel++;
+				}
+			}
+		}
+		return number_of_vowel;
+	},
+	reserve_word: function() {
+		const _word = this._data;
+		const _word_length = _word.length;
+		let _reserve_word = "";
+		let i = _word_length - 1;
+		for (i; i >= 0; i--) {
+			_reserve_word += _word[i];
+		}
+		return _reserve_word;
+	},
+	plindrome_finder: function() {
+		const _punctuation = [",",".",";",":","!"];
+		const _word = this._data;
+		const _lower_case_word = _word.toLowerCase();
+		const _word_length = _lower_case_word.length;
+		let _clean_word = "";
+		let _reserve_word = "";
+		let check = false;
+		let ok = false;
+		let i = _word_length - 1;
+		let j = _word_length - 1;
+		// Method that remove all punctuation and space in the word
+		for (i; i >= 0; i--) {
+			for (const item of _punctuation) {
+				if (_lower_case_word[i] !== item && _lower_case_word[i] !== " ") {
+					check = true;
+				} else {
+					check = false;
+					break;
+				}
+			}
+			if (check === true) {
+				_clean_word += _lower_case_word[i];
+			}
+		}
+		// Method that remove all punctuation and space then reserve the word
+		for (j; j >= 0; j--) {
+			for (const item of _punctuation) {
+				if (_lower_case_word[j] !== item && _lower_case_word[j] !== " ") {
+					ok = true;
+				} else {
+					ok = false;
+					break;
+				}
+			}
+			if (ok === true) {
+				_reserve_word += _lower_case_word[j];
+			}
+		}
+		console.log(_reserve_word);
+		if (_reserve_word === _clean_word) {
+			return "yes";
+		} else {
+			return "no";
+		}
+	}
+}
+// word_exact.show_data();
+
+/****************************
+*
+* Work with Class
+*
+*****************************/
+
+class Dog {
+	constructor(name, species, size) {
+		this.name = name;
+		this.species = species;
+		this.size = size
+	}
+	bark() {
+		if (this.species === "boarhound") {
+			return "Grrr! Grrrr!";
+		} else if (this.species === "terrier") {
+			return "Woof! Woof!"
+;		}
+	}
+}
+
+const fang = new Dog("Fang", "boarhound", 75);
+console.log(`${fang.name} is a ${fang.species} dog measuring ${fang.size}`);
+console.log(`Look, a cat! ${fang.name} barks: ${fang.bark()}`);
+
+const snowvy = new Dog("Snowvy", "terrier", 22);
+console.log(`${snowvy.name} is a ${snowvy.species} dog measuring ${snowvy.size}`);
+console.log(`Look, a cat! ${snowvy.name} barks: ${snowvy.bark()}`);
